@@ -26,6 +26,7 @@
     rbi = "!git rebase -i @{u}"          # interactive rebase on unpushed commits
     w = whatchanged                    # show logs with the differences introduced by each commit
     rf = reflog                        # reference log that manages when tips of branches are updated
+	aliases = config --get-regexp alias    
 
 #### comment/uncomment to use any of the configured merge tools ####
 [merge]
