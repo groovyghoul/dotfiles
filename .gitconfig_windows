@@ -26,7 +26,9 @@
     rbi = "!git rebase -i @{u}"          # interactive rebase on unpushed commits
     w = whatchanged                    # show logs with the differences introduced by each commit
     rf = reflog                        # reference log that manages when tips of branches are updated
-	aliases = config --get-regexp alias    
+	aliases = config --get-regexp alias
+    untracked =  ls-files --others --exclude-standard  # useful to show files in new untracked directories
+    dryrun = add --dry-run -A .   # shows what files would be included in an "add 
 
 #### comment/uncomment to use any of the configured merge tools ####
 [merge]
