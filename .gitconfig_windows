@@ -4,6 +4,7 @@
 [core]
 	editor = vim
 	autocrlf = true
+    ignorecase = true
 [credential]
 	helper = !\"C:/Program Files/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\"
 [alias]
@@ -28,13 +29,15 @@
     rf = reflog                        # reference log that manages when tips of branches are updated
 	aliases = config --get-regexp alias
     untracked =  ls-files --others --exclude-standard  # useful to show files in new untracked directories
-    dryrun = add --dry-run -A .   # shows what files would be included in an "add 
+    dryrun = add --dry-run -A .   # shows what files would be included in an "add all"
+    showstash = stash show -p 
 
 #### comment/uncomment to use any of the configured merge tools ####
 [merge]
 	# tool = winmerge
 	# tool = meld
-	tool = semanticmerge
+	# tool = semanticmerge
+    tool = kdiff3
 	conflictstyle = diff3
 
 [mergetool]
@@ -62,11 +65,11 @@
 #### Meld Configuration ####
 
 [mergetool "meld"]
-	cmd = \"C:/Program Files/meld/meld/meld.exe\" --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $BASE $REMOTE $MERGED
-	path = C:/Program Files/meld/meld/meld.exe
+	cmd = \"C:/Program Files (x86)/meld/meld.exe\" --diff $BASE $LOCAL --diff $BASE $REMOTE --diff $LOCAL $BASE $REMOTE $MERGED
+	path = C:/Program Files (x86)/meld/meld.exe
 [difftool "meld"]
-	cmd = \"C:/Program Files/meld/meld/meld.exe\" \"$LOCAL\" \"$REMOTE\"
-	path = C:/Program Files/meld/meld/meld.exe
+	cmd = \"C:/Program Files (x86)/meld/meld.exe\" \"$LOCAL\" \"$REMOTE\"
+	path = C:/Program Files (x86)/meld/meld.exe
 
 #### SemanticMerge Configuration ####
 
@@ -76,6 +79,9 @@
 	cmd = c:/Users/richard.GA/AppData/Local/PlasticSCM4/semanticmerge/mergetool.exe -s=\"$LOCAL\" -d=\"$REMOTE\"
 
 
+[mergetool "kdiff3"]
+    cmd = \"C:\\\\Program Files\\\\KDiff3\\\\kdiff3\" $BASE $LOCAL $REMOTE -o $MERGED
+    keepBackup = false
 ##################
 
 ##### AN EXAMPLE OF MY WORKFLOW #####
@@ -113,7 +119,7 @@
   # Before we push our local changes, we may want to do some cleanup,
   # to improve our commit messages or squash related commits together.
   #
-  # Letâ€™s say Iâ€™ve pushed two commits that are related to a new feature and
+  # Let’s say I’ve pushed two commits that are related to a new feature and
   # I have another where I made a spelling mistake in the commit message.
   # When I run "git rbi" I get dropped into my editor with this:
   #
@@ -136,3 +142,13 @@
   #     5dae0a0 - whatever
   #
  #    rbi = !git rebase -i @{u}
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple
+#[credential]
+#	helper = wincred
+[credential]
+	writelog = true
