@@ -31,7 +31,8 @@
     untracked =  ls-files --others --exclude-standard  # useful to show files in new untracked directories
     dryrun = add --dry-run -A .   # shows what files would be included in an "add all"
     showstash = stash show -p 
-
+    vc = log --format=%B -n 1     # shows the commit message for a given SHA
+    
 #### comment/uncomment to use any of the configured merge tools ####
 [merge]
 	# tool = winmerge
@@ -119,7 +120,7 @@
   # Before we push our local changes, we may want to do some cleanup,
   # to improve our commit messages or squash related commits together.
   #
-  # Let’s say I’ve pushed two commits that are related to a new feature and
+  # Letâ€™s say Iâ€™ve pushed two commits that are related to a new feature and
   # I have another where I made a spelling mistake in the commit message.
   # When I run "git rbi" I get dropped into my editor with this:
   #
