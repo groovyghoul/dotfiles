@@ -40,6 +40,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'liuchengxu/vim-which-key'
 Plug 'vimwiki/vimwiki'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
