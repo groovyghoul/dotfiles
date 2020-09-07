@@ -25,3 +25,8 @@ nmap ?? :Rg!<CR>
 "   Example: :Rg myterm -g '*.md'
 "command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
 
+" ---------------------
+" Test mappings
+" ---------------------
+map <C-f> <Esc><Esc>:Files!<CR>
+inoremap <C-f> <Esc><Esc>:BLines!<CR>
