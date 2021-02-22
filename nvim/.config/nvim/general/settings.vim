@@ -12,3 +12,5 @@ set noshowmatch
 set noshowmode
 set clipboard=unnamedplus    " this allows copy/cut/paste between vim (in WSL) and the Windows system clipboard
 set formatoptions-=cro       " stop newline continuation of comments (doesn't seem to be working)
+set ignorecase smartcase
+

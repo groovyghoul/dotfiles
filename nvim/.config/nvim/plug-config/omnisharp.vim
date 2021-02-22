@@ -28,7 +28,7 @@ let g:OmniSharp_popup_options = {
 "let g:OmniSharp_server_path = '/mnt/c/OmniSharp/omnisharp.win-x64/OmniSharp.exe'
 "let g:OmniSharp_translate_cygwin_wsl = 1
 
-" inoremap <expr> <Tab> pumvisible() ? '<C-n>' : getline('.')[col('.')-2] =~# '[[:alnum:].-_#$]' ? '<C-x><C-o>' : '<Tab>'
+inoremap <expr> <Tab> pumvisible() ? '<C-n>' : getline('.')[col('.')-2] =~# '[[:alnum:].-_#$]' ? '<C-x><C-o>' : '<Tab>'
 
 set completeopt=longest,menuone,preview
 
