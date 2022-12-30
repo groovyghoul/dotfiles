@@ -1,14 +1,6 @@
 # dotfiles
 
-These are my current dotfiles for use with stow.
-
-## Installation
-
-Using apt
-
-```bash
-sudo apt install stow
-```
+My current dotfiles.
 
 ## Usage
 
@@ -16,7 +8,16 @@ sudo apt install stow
 cd ~
 git clone https://github.com/groovyghoul/dotfiles.git
 cd dotfiles
-stow *
+```
+
+#### Linux
+```bash
+cp -rf nvim ~/.config/
+```
+
+#### Windows 
+```bash
+cp -r nvim ~/AppData/Local/
 ```
 
 ## License
