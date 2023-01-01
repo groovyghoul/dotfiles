@@ -7,3 +7,12 @@ require'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = false,
     },
 }
+
+require 'nvim-treesitter.install'.prefer_git = false
+
+-- try clang first (probably Windows) and fall back to gcc (WSL and Linux)
+if (vim.loop.os_uname().sysname == "Linux") then
+  require 'nvim-treesitter.install'.compilers = { "gcc" }
+else
+  require 'nvim-treesitter.install'.compilers = { "gcc", "clang" }
+end

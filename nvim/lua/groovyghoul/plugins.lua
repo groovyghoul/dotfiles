@@ -6,7 +6,7 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     -- treesitter plugins
-    { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     -- for commenting code easily
     "numToStr/Comment.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
