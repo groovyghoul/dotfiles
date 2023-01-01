@@ -18,6 +18,7 @@ require("lazy").setup({
     "j-hui/fidget.nvim",
     -- debug tools
     { "puremourning/vimspector", cmd = { "VimspectorInstall", "VimspectorUpdate" } },
+    "folke/trouble.nvim",
     -- completion plugins
     {
         "hrsh7th/nvim-cmp",
