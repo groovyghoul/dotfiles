@@ -10,7 +10,9 @@ require("telescope").setup({
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         prompt_prefix = " > ",
         color_devicons = true,
-
+        file_ignore_patterns = {
+            "obj", "bin", ".git"
+        },
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
@@ -25,7 +27,10 @@ require("telescope").setup({
         layout_config = {
             prompt_position = "top",
             width = 0.9
-        }
+        },
+        selection_strategy = "reset",
+        sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
     },
     extensions = {
         file_browser = {

@@ -3,7 +3,14 @@ require("lazy").setup({
     "nvim-tree/nvim-web-devicons",
     "akinsho/toggleterm.nvim",
     -- telescope plugins
-    "nvim-telescope/telescope.nvim",
+    { "nvim-telescope/telescope.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        cmd = {
+            "Telescope",
+        },
+    },
     "nvim-telescope/telescope-file-browser.nvim",
     -- treesitter plugins
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -13,7 +20,6 @@ require("lazy").setup({
     -- lsp plugins
     "neovim/nvim-lspconfig",
     "nvim-lua/lsp-status.nvim",
-    "nvim-lua/plenary.nvim",
     "williamboman/mason.nvim",
     "j-hui/fidget.nvim",
     -- debug tools
@@ -38,7 +44,6 @@ require("lazy").setup({
         end,
     },
     -- colorschemes
-    --[[ "ellisonleao/gruvbox.nvim", ]]
     "folke/tokyonight.nvim",
     -- status line
     "rebelot/heirline.nvim",

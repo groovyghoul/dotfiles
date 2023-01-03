@@ -1,5 +1,6 @@
 require'nvim-treesitter.configs'.setup {
     ensure_installed = { "c_sharp" },
+    ignore_installed = { "html" },
     sync_install = false,
 
     highlight = {
