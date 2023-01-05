@@ -88,11 +88,14 @@ require("lspconfig").rust_analyzer.setup({
 })
 
 -- c#
+local pid = vim.fn.getpid()
+
+local omnisharp_bin = "C:/Users/richard/AppData/Local/nvim-data/mason/packages/omnisharp/OmniSharp.dll"
+
 require("lspconfig").omnisharp.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = { "dotnet", "C:/Users/richard/AppData/Local/nvim-data/mason/packages/omnisharp/OmniSharp.dll",
-        "--languageserver", "--hostPID", tostring(pid) }
+    cmd = { "dotnet", omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) }
 })
 
 -- JS/TS
