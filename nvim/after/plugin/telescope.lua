@@ -11,7 +11,7 @@ require("telescope").setup({
         prompt_prefix = " > ",
         color_devicons = true,
         file_ignore_patterns = {
-            "obj", "bin", ".git"
+            "obj", "bin", ".git", "node_modules"
         },
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
