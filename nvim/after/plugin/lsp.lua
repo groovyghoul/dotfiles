@@ -39,7 +39,10 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = 0, desc = "LSP,debugging - goto type definition" })
 
     -- go to implementation
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0, desc = "LSP,debugging - goto implementation)" })
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0, desc = "LSP,debugging - goto implementation" })
+
+    -- find references
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = 0, desc = "LSP,debugging - find references" })
 
     -- diagnostic next
     vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next, { buffer = 0 })
@@ -59,6 +62,7 @@ local on_attach = function(client, bufnr)
 
     -- format
     vim.keymap.set('n', '<M-f>', vim.lsp.buf.format, { buffer = 0, desc = "LSP,debugging - format code" })
+
 end
 
 -- golang

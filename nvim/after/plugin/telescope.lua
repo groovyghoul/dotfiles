@@ -4,6 +4,7 @@ local previewers = require("telescope.previewers")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup({
     defaults = {
@@ -22,6 +23,10 @@ require("telescope").setup({
                 ["<C-x>"] = false,
                 ["<C-q>"] = actions.send_to_qflist,
                 ["<CR>"] = actions.select_default,
+                ["<c-t>"] = trouble.open_with_trouble,
+            },
+            n = {
+                ["<c-t>"] = trouble.open_with_trouble,
             },
         },
         layout_config = {
@@ -36,7 +41,7 @@ require("telescope").setup({
         file_browser = {
             theme = "ivy",
             -- disables netrw and use telescope-file-browser in its place
-            hijack_netrw = true,
+            -- hijack_netrw = true,
             mappings = {
                 ["i"] = {
                     -- your custom insert mode mappings
@@ -45,6 +50,25 @@ require("telescope").setup({
                     -- your custom normal mode mappings
                 },
             },
+        },
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+                -- even more opts
+            }
+
+            -- pseudo code / specification for writing custom displays, like the one
+            -- for "codeactions"
+            -- specific_opts = {
+            --   [kind] = {
+            --     make_indexed = function(items) -> indexed_items, width,
+            --     make_displayer = function(widths) -> displayer
+            --     make_display = function(displayer) -> function(e)
+            --     make_ordinal = function(e) -> string
+            --   },
+            --   -- for example to disable the custom builtin "codeactions" display
+            --      do the following
+            --   codeactions = false,
+            -- }
         },
     },
     --[[
@@ -58,6 +82,7 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension("ui-select")
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -71,6 +96,7 @@ vim.keymap.set('n', '<leader>gr', builtin.lsp_references, {})
 vim.keymap.set('n', '<M-\\>', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, {})
 vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, {})
+vim.keymap.set('n', '<leader>ca', builtin.diagnostics, {})
 
 -- file explorer
 vim.keymap.set('n', '<leader>e', ":Telescope file_browser<cr>", {})
