@@ -1,5 +1,6 @@
 -- map leader
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- disable netrw at the very start of your init.lua (nvim-tree)
 -- vim.g.loaded_netrw = 1

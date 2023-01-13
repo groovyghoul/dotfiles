@@ -14,4 +14,4 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("groovyghoul.globals")
 require("groovyghoul.set")
-require("groovyghoul.plugins")
+require("lazy").setup('groovyghoul.plugins')

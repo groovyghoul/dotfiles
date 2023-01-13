@@ -351,4 +351,5 @@ local statusLine = {
   { LSPActive },
   { Ruler },
 }
+
 require 'heirline'.setup(statusLine)
