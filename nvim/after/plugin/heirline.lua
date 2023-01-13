@@ -148,71 +148,8 @@ local LSPActive = {
   hl       = { fg = "green", bold = true },
 }
 
-local Git = {
-  condition = conditions.is_git_repo,
-
-  init = function(self)
-    self.status_dict = vim.b.gitsigns_status_dict
-    self.has_changes = self.status_dict.added ~= 0 or self.status_dict.removed ~= 0 or self.status_dict.changed ~= 0
-  end,
-
-  hl = { fg = "orange" },
-
-
-  { -- git branch name
-    provider = function(self)
-      return "  " .. self.status_dict.head .. " "
-    end,
-    hl = { bold = true }
-  },
-  -- You could handle delimiters, icons and counts similar to Diagnostics
-  {
-    condition = function(self)
-      return self.has_changes
-    end,
-    provider = "("
-  },
-  {
-    provider = function(self)
-      local count = self.status_dict.added or 0
-      return count > 0 and ("+" .. count .. " ")
-    end,
-    hl = { fg = colors.git_add },
-  },
-  {
-    provider = function(self)
-      local count = self.status_dict.removed or 0
-      return count > 0 and ("-" .. count .. " ")
-    end,
-    hl = { fg = colors.git_del },
-  },
-  {
-    provider = function(self)
-      local count = self.status_dict.changed or 0
-      return count > 0 and ("~" .. count)
-    end,
-    hl = { fg = colors.git_change },
-  },
-  {
-    condition = function(self)
-      return self.has_changes
-    end,
-    provider = ") ",
-  },
-}
-
 local Diagnostics = {
-
   condition = conditions.has_diagnostics,
-
-  --[[
-    static = {
-        error_icon = vim.fn.sign_getdefined("DiagnosticSignError")[1].text,
-        warn_icon = vim.fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-        info_icon = vim.fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-        hint_icon = vim.fn.sign_getdefined("DiagnosticSignHint")[1].text,
-    },
-    --]]
   static = {
     error_icon = "  ",
     warn_icon = "  ",
@@ -225,11 +162,8 @@ local Diagnostics = {
     self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
     self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
   end,
-
   update = { "DiagnosticChanged", "BufEnter" },
-
   hl = { fg = "white" },
-
   {
     provider = " ![",
   },
@@ -269,8 +203,8 @@ local FileNameBlock = {
         self.filename = vim.api.nvim_buf_get_name(0)
     end,
 }
--- We can now define some children separately and add them later
 
+-- We can now define some children separately and add them later
 local FileIcon = {
     init = function(self)
         local filename = self.filename
@@ -343,7 +277,6 @@ FileNameBlock = utils.insert(FileNameBlock,
 
 local statusLine = {
   { ViMode },
-  { Git },
   { FileNameBlock },
   { Align },
   { Space },
