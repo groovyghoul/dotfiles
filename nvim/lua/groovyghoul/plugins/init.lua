@@ -5,7 +5,6 @@ return {
         -- misc plugins
         "nvim-tree/nvim-web-devicons",
         "akinsho/toggleterm.nvim",
-        "nvim-telescope/telescope-file-browser.nvim",
         -- for commenting code easily
         "numToStr/Comment.nvim",
         "JoosepAlviste/nvim-ts-context-commentstring",
